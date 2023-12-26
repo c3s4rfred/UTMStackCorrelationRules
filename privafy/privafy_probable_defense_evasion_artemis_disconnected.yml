@@ -1,0 +1,41 @@
+# Based on Privafy POC documentation
+# Rule version v1.0.0
+
+- name: "Privafy: Probable defense evasion attack, Artemis Agent Audit disconnected"
+  severity: "Medium"
+  description: "The adversary is trying to avoid being detected. Defense Evasion consists of techniques that adversaries use to avoid detection throughout their compromise. 
+                Techniques used for defense evasion include uninstalling/disabling security software or obfuscating/encrypting data and scripts. 
+                Adversaries also leverage and abuse trusted processes to hide and masquerade their malware. 
+                Please see the logs attached to this alert for additional details."
+  solution: "Check the state of Artemis Agent Audit. See the logs to identify if it is a normal behaviour or is an attack."
+  category: "Defense Evasion"
+  tactic: "Impair Defenses: Disable or Modify Tools"
+  reference: 
+    - "https://attack.mitre.org/tactics/TA0005/"
+    - "https://attack.mitre.org/techniques/T1562/001/"
+  frequency: 60
+  cache:
+    - allOf:
+        - field: "logx.privafy.embDeviceProduct"
+          operator: "=="
+          value: "EDR"
+        - field: "logx.privafy.embEventClassID"
+          operator: "=="
+          value: "ARTEMIS_DISCONNECTED"
+      minCount: 1
+      timeLapse: 60
+      save:
+        - field: "logx.privafy.proto"
+          alias: "Protocol"
+        - field: "logx.privafy.src_user"
+          alias: "SourceUser"
+        - field: "logx.privafy.src_ip"
+          alias: "SourceIP"
+        - field: "logx.privafy.src_port"
+          alias: "SourcePort"
+        - field: "logx.privafy.dest_ip"
+          alias: "DestinationIP"
+        - field: "logx.privafy.dest_port"
+          alias: "DestinationPort"
+        - field: logx.privafy.src_host
+          alias: "SourceHost"
