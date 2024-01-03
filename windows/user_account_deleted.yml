@@ -1,6 +1,6 @@
-# Rule version v1.0.1
+# Rule version v1.0.2
 
-- name: "Windows: User account disabled or deleted"
+- name: "Windows: A user account was deleted"
   severity: "Medium"
   description: "Adversaries can manipulate accounts to maintain access to victim systems.
                 These actions could also include account activity designed to subvert policies
@@ -12,15 +12,16 @@
       or account-related policies."
   category: "Persistence"
   tactic: "Account Manipulation"
+  dataTypes: ["wineventlog"]
   reference:
     - "https://attack.mitre.org/tactics/TA0003/"
     - "https://attack.mitre.org/techniques/T1098/"
   frequency: 60
   cache: 
     - allOf:
-        - field: "logx.wineventlog.event_name"
+        - field: "logx.wineventlog.event_id"
           operator: "=="
-          value: "A user account was deleted"
+          value: "4726"
       minCount: 1
       timeLapse: 60
       save:
