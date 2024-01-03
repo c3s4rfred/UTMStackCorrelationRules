@@ -40,5 +40,5 @@
           alias: "DestinationIP"
         - field: "logx.privafy.dest_port"
           alias: "DestinationPort"
-        - field: logx.privafy.src_host
+        - field: "logx.privafy.src_host"
           alias: "SourceHost"
