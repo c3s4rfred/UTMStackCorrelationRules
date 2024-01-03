@@ -10,6 +10,7 @@
     <li>Contact the Privafy provider for further information.</li>
     </ol>"
   category: "EDR Events"
+  dataTypes: ["privafy"]
   reference: 
     - "https://privafy.com"
   frequency: 60

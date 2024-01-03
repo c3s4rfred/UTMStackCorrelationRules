@@ -10,6 +10,7 @@
     <li>Contact the Privafy provider for further information.</li>
     </ol>"
   category: "SSE Alerts"
+  dataTypes: ["privafy"]
   reference: 
     - "https://privafy.com"
   frequency: 60

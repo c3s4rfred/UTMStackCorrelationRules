@@ -13,6 +13,7 @@
     </ol>"
   category: "Privilege Escalation"
   tactic: "Account Manipulation"
+  dataTypes: ["privafy"]
   reference: 
     - "https://attack.mitre.org/tactics/TA0004"
     - "https://attack.mitre.org/techniques/T1098"
