@@ -21,7 +21,7 @@
           operator: "=="
           value: "EDR"
         - field: "logx.privafy.embEventClassID"
-          operator: "=="
+          operator: "contains"
           value: "ARTEMIS_DISCONNECTED"
       minCount: 1
       timeLapse: 60

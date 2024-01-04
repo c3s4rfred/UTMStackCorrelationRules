@@ -16,7 +16,7 @@
   frequency: 60
   cache:
     - allOf:
-        - field: "logx.privafy.embEventClassID"
+        - field: "logx.privafy.event_id"
           operator: "in"
           value: "303001,303002"
         - field: "logx.privafy.embDeviceProduct"
