@@ -10,7 +10,7 @@
     <li>See Privafy guidelines to get more information about alerts severities.</li>
     <li>Contact the Privafy provider for further information.</li>
     </ol>"
-  category: "Device Alerts"
+  category: "EDR Alerts"
   dataTypes: ["privafy"]
   reference: 
     - "https://privafy.com"
