@@ -1,0 +1,43 @@
+# Based on Privafy POC documentation
+# Rule version v1.0.0
+
+- name: "Privafy detected a cobalt strike resources"
+  severity: "High"
+  description: "The Privafy device has detected a cobalt strike resources by a YARA rule. 
+                Please see the logs attached to this alert for additional details."
+  solution: "<ol>
+    <li>Contact the Privafy provider for further information.</li>
+    </ol>"
+  category: "EDR Alerts"
+  dataTypes: ["privafy"]
+  reference: 
+    - "https://privafy.com"
+  frequency: 60
+  cache:
+    - allOf:
+        - field: "logx.privafy.embDeviceProduct"
+          operator: "=="
+          value: "EDR"
+        - field: "logx.privafy.embEventClassID"
+          operator: "in"
+          value: "YARA,EDRALRT-YARA"
+        - field: "logx.privafy.embName"
+          operator: "contains"
+          value: "CobaltStrike_Resources"
+      minCount: 1
+      timeLapse: 60
+      save:
+        - field: "logx.privafy.proto"
+          alias: "Protocol"
+        - field: "logx.privafy.src_user"
+          alias: "SourceUser"
+        - field: "logx.privafy.src_ip"
+          alias: "SourceIP"
+        - field: "logx.privafy.src_port"
+          alias: "SourcePort"
+        - field: "logx.privafy.dest_ip"
+          alias: "DestinationIP"
+        - field: "logx.privafy.dest_port"
+          alias: "DestinationPort"
+        - field: "logx.privafy.src_host"
+          alias: "SourceHost"
