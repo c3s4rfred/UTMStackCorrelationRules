@@ -1,7 +1,7 @@
 # Based on Privafy POC documentation
 # Rule version v1.0.0
 
-- name: "Privafy detected high severity alerts"
+- name: "Privafy detected high severity DPM alerts"
   severity: "High"
   description: "The Privafy device has detected a high severity event. 
                 For the alert purpose, high severity is when log severity is: High or Very-High. 
@@ -20,6 +20,12 @@
         - field: "logx.privafy.severityLabel"
           operator: "in"
           value: "High,Very-High"
+        - field: "logx.privafy.embDeviceProduct"
+          operator: "=="
+          value: "EDR"
+        - field: "logx.privafy.embEventClassID"
+          operator: "in"
+          value: "DPM,EDRALRT-DPM"
       minCount: 1
       timeLapse: 60
       save:
